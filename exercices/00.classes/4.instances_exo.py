@@ -1,4 +1,4 @@
-- Créez les instances suivantes :
+Créez les instances suivantes :
 
 Pour la classe Canape :
 
@@ -11,6 +11,8 @@ Pour la classe Canape :
         marque = "OKLM"
         nom = "Canape"
 
+canape1 = Canape("Cuir", "Blanc", 200x100x80, 1000, 2000, "OKLM", "Canape")
+    
     canape2 :
         materiau = "Tissu"
         couleur = "Bleu"
@@ -19,6 +21,8 @@ Pour la classe Canape :
         prix = 1600
         marque = "SIESTA"
         nom = "Canape"
+
+canape2 = Canape("Tissu", "Bleu", 150x90x70, 800, 1600, "SIESTA", "Canape")
 
 Pour la classe Chaise :
 
@@ -31,6 +35,8 @@ Pour la classe Chaise :
         marque = "PEPOUSE"
         nom = "Chaise"
 
+chaise1 = Chaise("Plastique", "Rouge", 50x50x70, 50, 100, "PEPOUSE", "Chaise")
+
     chaise2 :
         materiau = "Métal"
         couleur = "Gris"
@@ -39,6 +45,8 @@ Pour la classe Chaise :
         prix = 150
         marque = "PEPOUSE"
         nom = "Chaise"
+
+chaise2 = Chaise("Métal", "Gris", 60x60x80,750, 150, "PEPOUSE", "Chaise")
 
 Pour la classe Table :
 
@@ -50,6 +58,8 @@ Pour la classe Table :
         prix = 500
         marque = "TEX"
 
+table2 = Chaise("Bois", "Chêne", 150x80x75, 250, 500 ,"TEX")
+
     table1 :
         materiau = "Verre"
         couleur = "Transparent"
@@ -57,3 +67,5 @@ Pour la classe Table :
         cout = 350
         prix = 700
         marque = "TEX"
+
+table1 = Chaise("Verre", "Transparent", 120x60x75, 350, 700 ,"TEX")
