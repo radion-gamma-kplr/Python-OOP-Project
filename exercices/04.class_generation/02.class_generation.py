@@ -1,23 +1,29 @@
 def generate_class_def(nom_classe: str, attributs: dict, nom_superclasse: str, args_superclasse: list = []) -> str:
-    # Cette fonction génère une définition de classe Python à partir des paramètres passés et retourne une chaîne de caractères représentant la définition de classe générée.
+    # Cette fonction génère une définition de classe Python à partir des paramètres passés
+    # et retourne une chaîne de caractères représentant la définition de classe générée.
+
     """
     `nom_classe`: une chaîne de caractères représentant le nom de la classe à générer.
-    `attributs`: un dictionnaire représentant les attributs de la classe, où les clés sont les noms des attributs et les valeurs sont les types des attributs.
-    `nom_superclasse`: une chaîne de caractères représentant le nom de la superclasse éventuelle. Si la classe n'a pas de superclasse, on peut passer une chaîne vide en argument.
-    `args_superclasse`: une liste de chaînes de caractères représentant les arguments à passer au constructeur de la superclasse éventuelle. Si la classe n'a pas de superclasse, on peut passer une liste vide en argument.
+    `attributs`: un dictionnaire représentant les attributs de la classe, 
+    où les clés sont les noms des attributs et les valeurs sont les types des attributs.
+    `nom_superclasse`: une chaîne de caractères représentant le nom de la superclasse éventuelle.
+    Si la classe n'a pas de superclasse, on peut passer une chaîne vide en argument.
+    `args_superclasse`: une liste de chaînes de caractères représentant les arguments à passer
+    au constructeur de la superclasse éventuelle. Si la classe n'a pas de superclasse, on peut passer une liste vide en argument.
 
     La fonction retourne une chaîne de caractères représentant le code source de la classe.
     """
 
     # Initialisation des variables
-    """
+   '''
     On commence par initialiser plusieurs variables utiles pour la suite de la fonction :
 
     `args_constructeur`: une liste des noms des arguments à passer au constructeur de la classe.
-    `definition_constructeur`: une chaîne de caractères représentant la définition du constructeur de la classe, à remplir au fur et à mesure qu'on parcourt les attributs.
+    `definition_constructeur`: une chaîne de caractères représentant la définition du constructeur de la classe,
+    à remplir au fur et à mesure qu'on parcourt les attributs.
     `has_attributs`: un booléen qui permet de savoir si la classe a des attributs ou non.
 
-    """
+    '''
     args_constructeur = [] # une liste qui stocke les noms des attributs qui seront utilisés pour créer le constructeur
     definition_constructeur = "" # une chaîne de caractères qui stocke le code qui sera utilisé pour initialiser les attributs de la classe
     has_attributs = False # un booléen qui vérifie si la classe a des attributs ou non
@@ -32,11 +38,13 @@ def generate_class_def(nom_classe: str, attributs: dict, nom_superclasse: str, a
         modele_classe += f"({nom_superclasse})" # ajouter la superclasse à la définition de la classe
 
     modele_classe += ":\n" # ajouter une nouvelle ligne à la définition de la classe
+    
     """
     Ensuite, la fonction parcourt les attributs de la classe. 
     Pour chaque attribut, elle ajoute le nom de l'attribut à la liste args_constructeur et construit 
     une ligne de code de la forme `self.nom_attribut = nom_attribut` pour la définition du constructeur.     
     """
+
     # Gestion des attributs
     for nom_attribut in attributs.keys(): # pour chaque attribut dans le dictionnaire d'attributs
         if nom_attribut != "subclasses": # si l'attribut n'est pas une sous-classe
@@ -50,7 +58,8 @@ def generate_class_def(nom_classe: str, attributs: dict, nom_superclasse: str, a
     """
     # Gestion du nom de la classe si c'est une classe Product
     if nom_classe == "Product": # si la classe est de type Product
-        definition_constructeur += "\n\t\tself.name=type(self).__name__" # ajouter une ligne au code de définition du constructeur pour initialiser le nom de la classe
+        definition_constructeur += "\n\t\tself.name=type(self).__name__" 
+        # ajouter une ligne au code de définition du constructeur pour initialiser le nom de la classe
 
     """
     Si la classe a des attributs:
@@ -59,7 +68,8 @@ def generate_class_def(nom_classe: str, attributs: dict, nom_superclasse: str, a
     """
     # Gestion du constructeur
     if has_attributs: # la classe a des attributs
-        modele_constructeur = f"\tdef __init__(self, {', '.join(args_constructeur + args_superclasse)}):" # créer la signature du constructeur en incluant les arguments des attributs et les arguments de la superclasse
+        modele_constructeur = f"\tdef __init__(self, {', '.join(args_constructeur + args_superclasse)}):"
+        # créer la signature du constructeur en incluant les arguments des attributs et les arguments de la superclasse
 
         if len(args_superclasse) > 0: # si la superclasse a des arguments
             modele_constructeur += f"\n\t\tsuper().__init__({', '.join(args_superclasse)})" # ajouter une ligne pour initialiser la superclasse
